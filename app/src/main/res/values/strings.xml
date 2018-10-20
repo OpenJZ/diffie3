@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">diffie3</string>
+    <string name="title_requests">请求</string>
+    <string name="title_devices">设备</string>
+    <string name="title_settings">设置</string>
+    <string name="reqItem_map_key1">dn</string>
+    <string name="reqItem_map_key2">rt</string>
+    <string name="devItem_map_key1">dn2</string>
+    <string name="devItem_map_key2">mac</string>
+    <string name="devItem_map_key3">ds</string>
+    <string name="rt_bind">请求绑定</string>
+    <string name="rt_authorize">请求授权</string>
+    <string name="test_Text">Hello World!</string>
+    <string name="reqItem_map_key3">dh</string>
+</resources>

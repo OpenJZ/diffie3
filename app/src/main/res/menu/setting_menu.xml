@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/set_Password"
+        android:orderInCategory="0"
+        android:title="口令设置" />
+    <item
+        android:id="@+id/set_showMAC"
+        android:orderInCategory="1"
+        android:title="查看本机MAC地址" />
+    <item
+        android:id="@+id/set_others"
+        android:orderInCategory="2"
+        android:title="其他" />
+</menu>
