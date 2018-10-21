@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.shi_pc.diffie3.common.Package.BasePackage;
 import com.example.shi_pc.diffie3.common.Package.BindRequestPacket;
+import com.example.shi_pc.diffie3.common.Package.Global;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -131,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
                         //Toast.makeText(MainActivity.this,str,Toast.LENGTH_LONG);
                         System.out.println(str_secret);
                         //TODO 如果公共秘密正确
-                        BasePackage bp=GlobalData.reqPackList.get(itemIndex);
-                        if(bp.isValid()) {//如果报文有效
+                        BasePackage bp=Global.reqPackList.get(itemIndex);
+                        if(bp.isValid("","","","")) {//如果报文有效
                             alertDialog.dismiss();
                             //更新列表
                             reqListData.remove(itemIndex);
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                             //System.out.println("待发送报文："+str);
                             SocketThread s_Output = new SocketThread(DeviceIp,str);
                             s_Output.sot.start();
-                            GlobalData.reqPackList.remove(itemIndex);
+                            Global.reqPackList.remove(itemIndex);
 
                             listAdapter.notifyDataSetChanged();//适配器刷新
                         }
@@ -238,13 +239,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case MsgType.reqBind: { //请求绑定
                     BasePackage bp=(BasePackage) msg.obj;//从消息中拿出数据包
-                    if(bp.isUseful()) {
+                    if(bp.isUseful_Phone()) {
                         Map<String, String> newMap = new HashMap<String, String>();
                         newMap.put(getString(R.string.reqItem_map_key1), "设备：" + bp.getgHashMac());
                         newMap.put(getString(R.string.reqItem_map_key2), getString(R.string.rt_bind));
                         newMap.put(getString(R.string.reqItem_map_key3), "");
                         reqListData.add(newMap);//显示
-                        GlobalData.reqPackList.add(bp);//暂存报文
+                        Global.reqPackList.add(bp);//暂存报文
                         if (currentLayout == R.layout.request_item)
                             listAdapter.notifyDataSetChanged();//适配器刷新
                         break;
